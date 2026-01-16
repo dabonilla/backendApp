@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: 'test'
+  datasource:
+    url: jdbc:postgresql://${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+  jpa:
+    hibernate:
+      ddl-auto: update

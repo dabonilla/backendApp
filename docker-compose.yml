@@ -1,0 +1,31 @@
+
+services:
+  app:
+    image: spring_boot_image  # Imagen de tu aplicación Spring Boot
+    environment:
+      DB_URL: db:5432/mi_db
+      DB_USER: admin_user
+      DB_PASS: admin_password
+    build:
+        context: ./backend
+        dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: mi_db
+      POSTGRES_USER: admin_user
+      POSTGRES_PASSWORD: admin_password
+    ports:
+      - "5431:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+volumes:
+  postgres_data:

@@ -5,7 +5,7 @@ Este repositorio contiene el componente backend en Spring boot y el componente d
 ## Despliegue
 Clonar este repositorio y ejecutar el siguiente comando en la misma carpeta:
 
-```docker-compose -p miProyecto  up -d```
+```docker-compose -p backend up -d```
 
 Cuando los contenedores este creados ejecutar los siguientes comando para restaurar la base de datos:
 ```docker cp db/test_data.dump backend-db-1:/test_data.dump```

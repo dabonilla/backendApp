@@ -2,6 +2,7 @@ package com.danielbonilla.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,9 +21,14 @@ public class Student {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotBlank(message = "Name is mandatory")
     private String name;
+    @NotBlank(message = "lastName is mandatory")
     private String lastName;
+    @NotBlank(message = "email is mandatory")
     private String email;
+    @NotBlank(message = "date of birth is mandatory")
     private LocalDate dateOfBirth;
 
     @JsonIgnore

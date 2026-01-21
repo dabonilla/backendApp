@@ -4,6 +4,9 @@ package com.danielbonilla.demo.controller;
 import com.danielbonilla.demo.dto.StudentsNamesResponse;
 import com.danielbonilla.demo.model.Student;
 import com.danielbonilla.demo.service.StudentService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +22,7 @@ public class StudentController {
     }
 
     @PostMapping("/addStudent")
-    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> addStudent(@RequestBody @Valid Student student) {
         Student newStudent = studentService.createStudent(student);
         return new ResponseEntity<>(newStudent, HttpStatus.CREATED);
     }
@@ -41,7 +44,7 @@ public class StudentController {
     }
 
     @PutMapping("/updateStudent/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student student) {
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody @Valid Student student) {
         Student updatedStudent = studentService.updateStudent(student, id);
         return new ResponseEntity<>(updatedStudent, HttpStatus.OK);
     }
